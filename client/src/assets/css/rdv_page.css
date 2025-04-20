@@ -1,0 +1,192 @@
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.space-around {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.space-between {
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #EFF5F5 0% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100vh;
+}
+
+.encadre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid #4FC0D0;
+    border-radius: 6px;
+    margin-bottom: 20px!important; 
+}
+
+.propositionrdv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+
+    .zone-vide {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 20px;
+
+        margin: 5px;
+    }
+}
+
+.propositionrdv:first-child {
+    border-bottom: 1px solid #4FC0D0;
+}
+
+.propositionrdv img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background-color: #4FC0D0;
+    margin: 5px;
+}
+
+.propositionrdv .text {
+    padding: 5px;
+}
+
+.propositionrdv h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1px;
+}
+
+.propositionrdv p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 20px;
+}
+
+.encadre2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid #4FC0D0;
+    border-radius: 6px;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.choix {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    border: 1px solid #020202;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+.choix a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.choix a:first-child {
+    border-bottom: 1px solid #020202;
+}
+
+.choix a:hover:first-child {
+    background-color: #4FC0D0;
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+.choix a:hover:last-child {
+    background-color: #4FC0D0;
+    color: white;
+    border-radius: 0 0 15px 15px;
+}
+
+.choix a svg {
+    margin: 10px;
+}
+
+.title {
+    font: normal normal 600 20px/24px Montserrat;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.zone_old_rdv {
+    width: 40%;
+    border-right: 2px solid rgb(255, 255, 255);
+    height: 100vh;
+}
+
+.zone_new_rdv {
+    width: 60%;
+    height: 100vh;
+}
+
+.ma-20 {
+    margin: 0px 80px;
+}
+
+.rdv_list {
+    background: #EFF5F5 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding: 40px 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .zone_old_rdv {
+        width: 100%;
+
+    }
+
+    .zone_new_rdv {
+        width: 100%;
+    }
+
+    .ma-20 {
+        margin: 0px 20px;
+    }
+
+
+}

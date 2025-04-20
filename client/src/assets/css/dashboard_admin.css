@@ -1,0 +1,159 @@
+.section_one {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+} 
+
+.card-dashboard {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 425px;
+    padding: 20px;
+}
+
+/* Continuez avec les styles déjà définis, puis ajoutez: */
+
+.rdv-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rdv-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 10px;
+    background-color: #f0f0f0; /* Couleur de fond des items */
+    border-radius: 8px;
+}
+
+.rdv-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.rdv-nom {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.rdv-raison {
+    font-size: 0.9rem;
+    color: #000000;
+}
+
+.rdv-heure {
+    background-color: #e0e0e0; /* Couleur de fond pour l'heure */
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
+.rdv-heure.terminé {
+    background-color: #d4edda; /* Une couleur de fond pour les RDV terminés, par exemple */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem; /* ou la valeur souhaitée */
+}
+
+.card-header h2 {
+   font-size: 18px;
+} 
+
+.today {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.doctor-image {
+    width: 195px;
+    height: 195px;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.search-input {
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+}
+.doctor-info {
+    text-align: center;
+}
+.doctor-info h1 {
+    margin: 0;
+    color: #333;
+}
+
+.specialite {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.statistics {
+    margin-bottom: 20px;
+}
+
+.appointment-limit h2 {
+    margin: 0;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 10px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.progress {
+    background-color: #4caf50;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.numbers {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.notifications {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.notification-number {
+    background-color: #4caf50;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.missed-calls, .new-messages {
+    display: flex;
+    align-items: center;
+}
+
+/* Ajoutez d'autres styles au besoin */

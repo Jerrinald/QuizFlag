@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+/* navbar.css */
+.navbar {
+height: 100%;
+width: 250px; /* Largeur de la barre de navigation */
+position: fixed;
+top: 0;
+left: 0;
+background-color: #008A9A; /* Couleur de fond de la barre de navigation */
+overflow-x: hidden; /* Prévenir le débordement horizontal */
+transition: 0.5s; /* Transition douce pour le menu de navigation */
+z-index: 1000; /* Assure que la navbar reste au-dessus des autres contenus */
+color: #FFFFFF;
+}
+
+.navbar-nav {
+list-style-type: none; /* Enlève les puces de la liste */
+padding: 0; /* Enlève le padding par défaut */
+margin: 0; /* Enlève la marge par défaut */
+width: 100%; /* Assure que les liens utilisent toute la largeur disponible */
+display: flex; /* Utilise flexbox pour organiser les items de navigation */
+flex-direction: column; /* Organise les items de navigation verticalement */
+margin-top: 120px;
+}
+
+.nav-item {
+width: 100%; /* Assure que chaque item utilise toute la largeur disponible */
+}
+.nav-item:first-child {
+    margin-bottom: 100px;
+}
+.nav-item:hover {
+    background-color: #EFF1F7; /* Couleur de fond de l'item au survol */
+    font-family: 'Montserrat';
+    color: #008A9A !important;
+}
+
+.nav-link {
+display: flex; /* Utilise flexbox pour aligner l'icône et le texte */
+align-items: center; /* Centre les éléments verticalement */
+height: 60px; /* Hauteur de chaque item de navigation */
+text-decoration: none; /* Enlève le soulignement des liens */
+transition: 0.5s; /* Transition douce pour les effets de survol */
+}
+
+.nav-link .icon {
+margin: 0 16px; /* Marge autour de l'icône */
+}
+
+.link-text {
+font-family: 'Montserrat';
+}
+
+/* Adaptations pour mobiles ou écrans plus petits */
+@media screen and (max-width: 600px) {
+.navbar {
+    width: 100px; /* Réduit la largeur de la barre de navigation pour les petits écrans */
+}
+
+.link-text {
+    display: none; /* Cache le texte des liens sur les petits écrans */
+}
+
+.nav-link .icon {
+    margin: 0; /* Enlève la marge autour de l'icône sur les petits écrans */
+    justify-content: center; /* Centre l'icône horizontalement */
+}
+}

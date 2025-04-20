@@ -1,0 +1,136 @@
+[
+    {
+        "nom": "Sandrine IRIGOYEN",
+        "poste": "Chirurgien-dentiste",
+        "adresse": "4 Allée du Dr Lejzer Ludwik Zamenhof, 31100 Toulouse",
+        "planning": [
+            {
+                "jour": "LUN",
+                "date": "11 JUL",
+                "heures": [
+                    "09:20",
+                    "10:20",
+                    "11:20",
+                    "12:20",
+                    "13:20",
+                    "14:20"
+                ]
+            },
+            {
+                "jour": "MAR",
+                "date": "12 JUL",
+                "heures": [
+                    "09:20",
+                    "-",
+                    "-",
+                    "-",
+                    "-",
+                    "-"
+                ]
+            },
+            {
+                "jour": "MER",
+                "date": "13 JUL",
+                "heures": [
+                    "09:20",
+                    "10:20",
+                    "11:20",
+                    "12:20",
+                    "13:20",
+                    "14:20"
+                ]
+            },
+            {
+                "jour": "JEU",
+                "date": "14 JUL",
+                "heures": [
+                    "09:20",
+                    "-",
+                    "-",
+                    "-",
+                    "-",
+                    "-"
+                ]
+            },
+            {
+                "jour": "VEN",
+                "date": "15 JUL",
+                "heures": [
+                    "09:20",
+                    "-",
+                    "-",
+                    "-",
+                    "-",
+                    "-"
+                ]
+            }
+        ]
+    },
+    {
+        "nom": "Jean Dupont",
+        "poste": "Médecin généraliste",
+        "adresse": "15 Rue de la Santé, 75013 Paris",
+        "planning": [
+            {
+                "jour": "LUN",
+                "date": "11 JUL",
+                "heures": [
+                    "08:00",
+                    "-",
+                    "-",
+                    "13:00",
+                    "14:00",
+                    "15:00"
+                ]
+            },
+            {
+                "jour": "MAR",
+                "date": "12 JUL",
+                "heures": [
+                    "09:30",
+                    "10:30",
+                    "11:30",
+                    "-",
+                    "-",
+                    "-"
+                ]
+            },
+            {
+                "jour": "MER",
+                "date": "13 JUL",
+                "heures": [
+                    "-",
+                    "10:00",
+                    "11:00",
+                    "-",
+                    "-",
+                    "-"
+                ]
+            },
+            {
+                "jour": "JEU",
+                "date": "14 JUL",
+                "heures": [
+                    "09:00",
+                    "-",
+                    "-",
+                    "13:30",
+                    "-",
+                    "-"
+                ]
+            },
+            {
+                "jour": "VEN",
+                "date": "15 JUL",
+                "heures": [
+                    "-",
+                    "10:30",
+                    "-",
+                    "-",
+                    "-",
+                    "-"
+                ]
+            }
+        ]
+    }
+]

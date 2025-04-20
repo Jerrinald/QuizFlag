@@ -1,0 +1,123 @@
+.title-admin-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0;
+}
+
+.admin-home-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-home-container a{
+    color: black;
+}
+
+.admin-home-container .button-admin-container{
+    display: flex;
+    background-color: aqua;
+    margin: 1% 0;
+    justify-content: center;
+    width: 25%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.admin-container-table{
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-list {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-item {
+    display: table-row;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-header {
+    font-weight: bold;
+    background-color: #f2f2f2;
+  }
+  
+  .user-info {
+    display: table-cell;
+    padding: 8px;
+    /* border-bottom: 1px solid #ddd; */
+  }
+
+  .user-info.action{
+    display: none;
+  }
+
+  .user-info.extend-column{
+    width: 20%;
+  }
+  
+  /* .user-info select {
+    width: 80px;
+  } */
+
+  
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .edit-user-icon {
+    display: table-cell;
+    padding: 8px;
+    text-align: center;
+    color: blue;
+  }
+
+  .edit-user-icon a {
+    display: inline-block;
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+  
+  .edit-user-icon:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .cancel-user-icon{
+    background-color: red;
+    margin: 0 2%;
+    padding: 2px;
+    border-radius: 5px;
+  }
+
+  .cancel-user-icon:hover{
+    background-color: rgb(241, 89, 89);
+  }
+
+  .validate-user-icon{
+    background-color: lightblue;
+    margin: 0 2%;
+    padding: 2px;
+    border-radius: 5px
+  }
+
+  .validate-user-icon:hover{
+    background-color: rgb(134, 201, 224);
+  }
+  

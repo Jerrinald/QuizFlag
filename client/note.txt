@@ -1,0 +1,16 @@
+# reference : https://dev.to/ysmnikhil/how-to-build-with-react-or-vue-with-vite-and-docker-1a3l
+
+
+#first lunch 
+docker-compose up --build --no-recreate -d
+
+#Segond time 
+docker-compose up -d
+
+#build and start application 
+docker exec -it vite_docker sh
+
+#run 
+npm i && npm run dev
+
+https://api.first.org/data/v1/countries?limit=249
