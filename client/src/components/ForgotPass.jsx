@@ -45,15 +45,18 @@ function ForgotPass() {
       setLoading(true);
 
       try {
-        const response = await fetch("http://localhost/api/forgot-pass", {
+        const response = await fetch("http://10.50.0.101:8080/api/forgot-pass", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/ld+json",
           },
           body: JSON.stringify(formValues),
         });
 
         const data = await response.json();
+
+        console.log(response);
+        
 
         if (!response.ok) {
           throw new Error(data.error || "Une erreur s'est produite.");
@@ -104,7 +107,7 @@ function ForgotPass() {
           </>
         ) : (
           // Show success message when form is hidden
-          <p className="mt-4 text-center text-green-500">{message}</p>
+          <p className="mt-4 text-center text-blue-500">{message}</p>
         )}
 
         {error && <p className="mt-4 text-center text-red-500">{error}</p>}

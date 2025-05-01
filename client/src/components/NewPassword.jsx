@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function NewPassword() {
     const [password, setPassword] = useState("");
@@ -7,11 +7,18 @@ function NewPassword() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);  
 
-  const { token } = useParams();
+    const token = queryParams.get("token");
+    const email = queryParams.get("email");
+
+    console.log(email);
+    
 
     const [formValues, setFormValues] = useState({
         token : token,
+        email : email,
         plainPassword: '',
     });
 
@@ -31,10 +38,10 @@ function NewPassword() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/reset-password", {
+      const response = await fetch("http://10.50.0.101:8080/api/reset-pass", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/ld+json",
         },
         body: JSON.stringify(formValues),
       });
@@ -43,9 +50,9 @@ function NewPassword() {
 
       if (!response.ok) {
         throw new Error(data.error || "Une erreur s'est produite.");
+      } else {
+        setMessage("Votre mot de passe a été mis à jour avec succès !");
       }
-
-      setMessage("Votre mot de passe a été mis à jour avec succès !");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -85,7 +92,7 @@ function NewPassword() {
           </form>
         </>
       )}
-        {message && <p className="mt-4 text-center text-green-500">{message}</p>}
+        {message && <p className="mt-4 text-center text-blue-500">{message}</p>}
         {error && <p className="mt-4 text-center text-red-500">{error}</p>}
       </div>
     </main>

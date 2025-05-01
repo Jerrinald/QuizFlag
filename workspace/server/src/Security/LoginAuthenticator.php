@@ -8,6 +8,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authenticator\JWTAuthenti
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -49,7 +50,12 @@ class LoginAuthenticator extends AbstractAuthenticator
             throw new AuthenticationException('User not found');
         }
 
-        return new SelfValidatingPassport(new UserBadge($user->getUserIdentifier()));
+        return new Passport(
+            new UserBadge($user->getUserIdentifier(), function () use ($user) {
+                return $user;
+            }),
+            new PasswordCredentials($credentials['password'])
+        );
     }
 
     public function onAuthenticationSuccess(Request $request, $token, string $firewallName): Response

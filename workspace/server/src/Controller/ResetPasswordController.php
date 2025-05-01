@@ -27,14 +27,14 @@ class ResetPasswordController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
 
-        if (empty($data['token']) || empty($data['plainPassword'])) {
+        if (empty($data['token']) || empty($data['plainPassword']) || empty($data['email'])) {
             return new JsonResponse(['error' => 'Missing data'], 400);
         }
 
-        $user =  $this->entityManager->getRepository(User::class)->findOneBy(['resetToken' => $data['token']]);
+        $user =  $this->entityManager->getRepository(User::class)->findOneBy(['resetToken' => $data['token'], 'email' => $data['email']]);
 
         if (!$user) {
-            return new JsonResponse(['error' => 'Invalid token'], 404);
+            return new JsonResponse(['error' => 'Invalid toke or emailn'], 404);
         }
 
         // Check if the token is expired

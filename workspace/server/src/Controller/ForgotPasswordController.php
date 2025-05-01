@@ -44,7 +44,21 @@ class ForgotPasswordController extends AbstractController
         $this->entityManager->flush();
 
         $subject = "Password Reset Request";
-        $htmlContent = "<p>Click <a href='https://yourwebsite.com/reset-pass/$resetToken'>here</a> to reset your password.</p>";
+        $emailEncoded = urlencode($user->getEmail()); // Always URL-encode query params
+        
+        $resetLink = "localhost:8010/reset-pass?token=$resetToken&email=$emailEncoded";
+        
+        $htmlContent = "
+            <div style='font-family: Arial, sans-serif; line-height: 1.6; font-size: 16px; color: #333;'>
+                <p>Hi there,</p>
+                <p>We received a request to reset your password. You can reset it by clicking the link below:</p>
+                <p>
+                    <a href='$resetLink' style='background-color: #2563eb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;'>Reset My Password</a>
+                </p>
+                <p>If you didn’t request this, you can safely ignore this email.</p>
+                <p>Thanks,<br>The FlagQuiz Team</p>
+            </div>
+        ";
 
         $this->emailService->sendVerificationEmail($user->getEmail(), $subject, $htmlContent);
 

@@ -21,6 +21,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 class ResetPass
 {
+
+    #[Groups(['reset:write'])]
+    private string $email;
+
     #[Groups(['reset:write'])]
     private string $token;
 
@@ -35,6 +39,16 @@ class ResetPass
     public function setToken(string $token): void
     {
         $this->token = $token;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     public function getPlainPassword(): ?string

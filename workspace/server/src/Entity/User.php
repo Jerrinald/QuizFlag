@@ -13,6 +13,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\BestScoreController;
 use App\Controller\CheckBestScoreController;
+use App\Controller\FindUserByResetTokenController;
 use App\Controller\ForgotPasswordController;
 use DateTimeImmutable;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;

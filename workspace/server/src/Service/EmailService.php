@@ -20,20 +20,17 @@ class EmailService
 
     public function sendVerificationEmail($destinator, $subject, $htmlContent): void
     {
-        dump($this->sendinblueApiKey);
         $config = Configuration::getDefaultConfiguration()->setApiKey('api-key', $this->sendinblueApiKey);
 
         $apiInstance = new TransactionalEmailsApi(new Client(['verify' => false]), $config);
 
         $sendSmtpEmail = new \Brevo\Client\Model\SendSmtpEmail();
         $sendSmtpEmail['to'] = [['email' => $destinator]];
-        $sendSmtpEmail['sender'] = ['name' => 'QuizFlag', 'email' => 'no-reply@quiz-flag.com'];
-        $sendSmtpEmail['htmlContent'] = $htmlContent;
+        $sendSmtpEmail['sender'] = ['name' => 'FlagQuiz Team', 'email' => 'no-reply@quiz-flag.com'];
         $sendSmtpEmail['subject'] = $subject;
-        $sendSmtpEmail['headers'] = array('MIME-version'=>'1.0',
-        'Date'=> date('r'), 'From'=> 'Quiz-Flag<no-reply@quiz-flag.com>', 'Reply-To'=> 'Quiz-flag<no-reply@quizflag.com>',
-        'Content-Type'=> 'text/html; charset=utf-8', 'X-Mailer'=> 'PHP/'.phpversion());
-
+        $sendSmtpEmail['htmlContent'] = $htmlContent;
+        $sendSmtpEmail['textContent'] = "To reset your password, go to https://yourwebsite.com/reset-pass/";
+    
         try {
             $result = $apiInstance->sendTransacEmail($sendSmtpEmail);
         } catch (Exception $e) {
