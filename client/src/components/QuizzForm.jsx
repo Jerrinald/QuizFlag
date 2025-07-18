@@ -12,11 +12,15 @@ export default function QuizzForm({ iso, onAnswerCheck }) {
         setWaiting(true);
         let name = "";
 
+        console.log(iso);
+        
         if (isSkipped === false) {
             setIsInput(true);
             const formData = new FormData(event.target);
             formData.append('iso', iso);
             name = formData.get('name');
+            
+            
         }
 
         try {
@@ -32,6 +36,8 @@ export default function QuizzForm({ iso, onAnswerCheck }) {
             });
 
             const jsonCountry = await response.json();
+            console.log(jsonCountry);
+            
             onAnswerCheck(jsonCountry.isCorrect, jsonCountry.correctName, isSkipped);
         } catch (error) {
             console.error("Error submitting form", error);

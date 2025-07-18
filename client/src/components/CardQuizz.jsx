@@ -12,6 +12,8 @@ function CardQuizz({ svgCountry, iso, onCorrectAnswer, onIncrementScore, timer }
 
     const handleAnswerCheck = (correct, correctName, isSkipped) => {
 
+        console.log(iso);
+        
         if (isSkipped) {
             
             setIsSkippedFlag(isSkipped);

@@ -13,7 +13,7 @@ class EmailService
 {
     private string $sendinblueApiKey;
 
-    public function __construct(string $sendinblueApiKey = '')
+    public function __construct(string $sendinblueApiKey)
     {
         $this->sendinblueApiKey = $sendinblueApiKey;
     }
@@ -26,7 +26,7 @@ class EmailService
 
         $sendSmtpEmail = new \Brevo\Client\Model\SendSmtpEmail();
         $sendSmtpEmail['to'] = [['email' => $destinator]];
-        $sendSmtpEmail['sender'] = ['name' => 'FlagQuiz Team', 'email' => 'no-reply@quiz-flag.com'];
+        $sendSmtpEmail['sender'] = ['name' => 'FlagQuiz Team', 'email' => 'noreply@quizflag.com'];
         $sendSmtpEmail['subject'] = $subject;
         $sendSmtpEmail['htmlContent'] = $htmlContent;
         $sendSmtpEmail['textContent'] = "To reset your password, go to https://yourwebsite.com/reset-pass/";
