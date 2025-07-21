@@ -24,7 +24,7 @@ export default function QuizzForm({ iso, onAnswerCheck }) {
         }
 
         try {
-            const response = await fetch('http://10.50.0.101:8080/api/country-check', {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/country-check`, {
             method: 'POST',
             body: JSON.stringify({
                 iso: iso,

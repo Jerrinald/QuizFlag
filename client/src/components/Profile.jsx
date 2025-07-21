@@ -20,7 +20,7 @@ function Profile() {
 
     const handleSaveUsername = async (formEdit) => {
         try {
-            const response = await fetch(`http://10.50.0.101:8080/api/users/${userId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users/${userId}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/merge-patch+json',

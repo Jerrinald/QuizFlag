@@ -17,7 +17,8 @@ function AdminUser() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://10.50.0.101:8080/api/users", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
+}/api/users`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -82,7 +83,8 @@ function AdminUser() {
         
       } else {
         // Create User (POST)
-        const response = await fetch("http://10.50.0.101:8080/api/create-user", {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
+}/api/create-user`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/ld+json',

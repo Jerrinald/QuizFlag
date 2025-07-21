@@ -63,7 +63,8 @@ function Register() {
       console.log(formValues);
       
       try {
-        const response = await fetch("http://10.50.0.101:8080/api/users", {
+        const response = fetch(`${import.meta.env.VITE_API_BASE_URL
+}/api/users`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/ld+json',

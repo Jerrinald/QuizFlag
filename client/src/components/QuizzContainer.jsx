@@ -57,7 +57,8 @@ function QuizzContainer() {
                 try {
                     const encryptedScore = await encryptBestScore(score);  // Use the imported function
                     console.log(encryptedScore);
-                    const response = await fetch("http://10.50.0.101:8080/api/edit-best-score", {
+                    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
+}/api/edit-best-score`, {
                         method: "PATCH",
                         headers: {
                             "Content-Type": 'application/merge-patch+json',

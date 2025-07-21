@@ -25,7 +25,9 @@ class UserDenormalizer implements DenormalizerInterface
         assert($user instanceof User);
 
         $operationName = $context['operation_name'] ?? null;
-        $httpMethod = $context['request_method'] ?? null;
+        $operation = $context['operation'] ?? null;
+        $httpMethod = $operation?->getMethod(); 
+
         $uri = $context['request_uri'] ?? null; // This may not always be available
 
         if ($httpMethod === 'POST' && $uri === '/api/users') {

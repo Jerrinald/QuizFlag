@@ -12,7 +12,8 @@ function Ranking() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://10.50.0.101:8080/api/usersRank", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
+}/api/usersRank`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

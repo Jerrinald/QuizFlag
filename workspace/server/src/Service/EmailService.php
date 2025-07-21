@@ -22,6 +22,7 @@ class EmailService
     {
         $config = Configuration::getDefaultConfiguration()->setApiKey('api-key', $this->sendinblueApiKey);
 
+
         $apiInstance = new TransactionalEmailsApi(new Client(['verify' => false]), $config);
 
         $sendSmtpEmail = new \Brevo\Client\Model\SendSmtpEmail();
@@ -33,6 +34,7 @@ class EmailService
     
         try {
             $result = $apiInstance->sendTransacEmail($sendSmtpEmail);
+            dump($result);
         } catch (Exception $e) {
             throw new \RuntimeException('Error sending email: ' . $e->getMessage());
         }

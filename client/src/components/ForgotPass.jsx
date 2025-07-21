@@ -45,7 +45,8 @@ function ForgotPass() {
       setLoading(true);
 
       try {
-        const response = await fetch("http://10.50.0.101:8080/api/forgot-pass", {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
+}/api/forgot-pass`, {
           method: "POST",
           headers: {
             "Content-Type": "application/ld+json",
@@ -55,7 +56,7 @@ function ForgotPass() {
 
         const data = await response.json();
 
-        console.log(response);
+        console.log(data.error);
         
 
         if (!response.ok) {
@@ -66,6 +67,7 @@ function ForgotPass() {
         setSuccess(true); // Hide form on success
       } catch (err) {
         setError(err.message);
+        console.log(err);
       } finally {
         setLoading(false);
       }

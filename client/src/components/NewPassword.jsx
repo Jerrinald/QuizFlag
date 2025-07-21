@@ -38,7 +38,7 @@ function NewPassword() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://10.50.0.101:8080/api/reset-pass", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reset-pass`, {
         method: "POST",
         headers: {
           "Content-Type": "application/ld+json",
