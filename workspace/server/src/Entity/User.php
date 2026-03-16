@@ -103,7 +103,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->createdAt = new DateTimeImmutable();
         $this->setBestScore(0);
-
     }
 
 

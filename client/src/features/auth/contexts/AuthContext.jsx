@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
     setRole([])
   };
 
-  // Function to check if the token is expired
   const checkTokenExpiration = () => {
     const token = localStorage.getItem("jwtToken");
     if (!token) {
@@ -27,10 +26,10 @@ export const AuthProvider = ({ children }) => {
 
     try {
       const decodedToken = decodeToken(token);
-      const currentTime = Math.floor(Date.now() / 1000); // Convert to seconds
+      const currentTime = Math.floor(Date.now() / 1000);
       if (decodedToken.exp < currentTime) {
         logout();
-      } else {        
+      } else {
         setRole(decodedToken.roles || []);
       }
     } catch (error) {
@@ -49,10 +48,10 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    checkTokenExpiration(); // Check immediately
+    checkTokenExpiration();
     const interval = setInterval(checkTokenExpiration, 50000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (

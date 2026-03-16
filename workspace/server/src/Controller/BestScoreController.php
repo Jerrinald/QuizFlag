@@ -27,28 +27,12 @@ class BestScoreController extends AbstractController
 
         // 2️⃣ Get encrypted bestScore from request
         $data = json_decode($request->getContent(), true);
-        if (!isset($data['encryptedBestScore'])) {
+        if (!isset($data['bestScore'])) {
             return new JsonResponse(['message' => 'Missing encrypted bestScore'], 400);
         }
 
-        // 3️⃣ Load private key
-        $privateKeyPath = $this->getParameter('kernel.project_dir') . '/config/keys/private.pem';
-        $privateKey = openssl_pkey_get_private(file_get_contents($privateKeyPath));
 
-        if (!$privateKey) {
-            return new JsonResponse(['message' => 'Private key not found'], 500);
-        }
-
-        // 4️⃣ Decrypt the bestScore
-        $decodedBestScore = base64_decode($data['encryptedBestScore']);
-        $decryptedBestScore = "";
-        openssl_private_decrypt($decodedBestScore, $decryptedBestScore, $privateKey);
-
-        if (!$decryptedBestScore || !is_numeric($decryptedBestScore)) {
-            return new JsonResponse(['message' => 'Decryption failed'], 400);
-        }
-
-        $newBestScore = (int) $decryptedBestScore;
+        $newBestScore = (int) $data['bestScore'];
 
         $user->setBestScore($newBestScore);
         $entityManager->persist($user);

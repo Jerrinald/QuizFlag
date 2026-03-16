@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import EditUserModal from "./EditUserModal";
-import ConfirmModal from "./ConfirmModal";
+import EditUserModal from "../components/EditUserModal";
+import ConfirmModal from "../components/ConfirmModal";
 
 function AdminUser() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedUser, setSelectedUser] = useState(null); 
-  const [userToDelete, setUserToDelete] = useState(null); 
-  const [isCreating, setIsCreating] = useState(false); // Track create mode
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [userToDelete, setUserToDelete] = useState(null);
+  const [isCreating, setIsCreating] = useState(false);
   const token = localStorage.getItem("jwtToken");
 
   useEffect(() => {
@@ -17,8 +17,7 @@ function AdminUser() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
-}/api/users`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -26,14 +25,11 @@ function AdminUser() {
       });
       const data = await response.json();
 
-      console.log(data);
-      
-
       if (data["member"]) {
         setUsers(data["member"]);
       }
     } catch (error) {
-      setErrorMessage("Erreur lors de la récupération des utilisateurs");
+      setErrorMessage("Erreur lors de la recuperation des utilisateurs");
     } finally {
       setLoading(false);
     }
@@ -44,7 +40,6 @@ function AdminUser() {
 
     try {
       if (userId) {
-        // Edit User (PATCH)
         const response = await fetch(`http://10.50.0.101:8080/api/users/${userId}`, {
           method: "PATCH",
           headers: {
@@ -59,20 +54,10 @@ function AdminUser() {
             roles: newRoles,
           }),
         });
-        
+
         if (!response.ok) {
-          const errorBody = await response.json(); // Parse l'erreur retournée par l'API
+          const errorBody = await response.json();
           setErrorMessage('Une erreur est survenue ', errorBody.title);
-          
-          console.log(errorBody);
-          console.log(JSON.stringify({
-            username: updatedData.username,
-            email: updatedData.email,
-            plainPassword: updatedData.plainPassword || "",
-            roles: newRoles,
-          }),);
-          
-          
         } else {
           setUsers((prevUsers) =>
             prevUsers.map((u) =>
@@ -80,11 +65,9 @@ function AdminUser() {
             )
           );
         }
-        
+
       } else {
-        // Create User (POST)
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
-}/api/create-user`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/create-user`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/ld+json',
@@ -99,23 +82,19 @@ function AdminUser() {
         });
 
         if (!response.ok) {
-          const errorBody = await response.json(); // Parse l'erreur retournée par l'API
-          console.log(errorBody);
-          
+          const errorBody = await response.json();
           setErrorMessage('Une erreur est survenue ', errorBody.message);
         } else {
           const newUser = await response.json();
           setUsers([...users, newUser]);
         }
-        
+
       }
 
       setSelectedUser(null);
       setIsCreating(false);
     } catch (error) {
-      console.log(error);
-      
-      setErrorMessage("Erreur lors de l'opération sur l'utilisateur");
+      setErrorMessage("Erreur lors de l'operation sur l'utilisateur");
     }
   };
 
@@ -124,15 +103,13 @@ function AdminUser() {
       await fetch(`http://10.50.0.101:8080/api/users/${userId}`, {
         method: "DELETE",
         headers: {
-          "Accept": "*/*",  // Ensure the value is a string
+          "Accept": "*/*",
           "Authorization": `Bearer ${token}`,
         },
       });
 
     } catch (error) {
-      console.log(error);
       setErrorMessage('Une erreur est survenue ', error);
-      
     } finally {
       setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
       setUserToDelete(null);
@@ -178,13 +155,13 @@ function AdminUser() {
                     className="bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500"
                     onClick={() => setSelectedUser(user)}
                   >
-                    ✏️
+                    Edit
                   </button>
                   <button
                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                     onClick={() => setUserToDelete(user)}
                   >
-                    🗑️
+                    Delete
                   </button>
                 </td>
               </tr>

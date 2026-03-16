@@ -4,7 +4,7 @@ function ForgotPass() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false); // Track success state
+  const [success, setSuccess] = useState(false);
 
   const [formValues, setFormValues] = useState({
     email: "",
@@ -37,7 +37,7 @@ function ForgotPass() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     setMessage("");
     setError("");
 
@@ -45,8 +45,7 @@ function ForgotPass() {
       setLoading(true);
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
-}/api/forgot-pass`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/forgot-pass`, {
           method: "POST",
           headers: {
             "Content-Type": "application/ld+json",
@@ -56,18 +55,14 @@ function ForgotPass() {
 
         const data = await response.json();
 
-        console.log(data.error);
-        
-
         if (!response.ok) {
           throw new Error(data.error || "Une erreur s'est produite.");
         }
 
-        setMessage("Si un compte est associé à cet email, vous recevrez un lien de réinitialisation.");
-        setSuccess(true); // Hide form on success
+        setMessage("Si un compte est associe a cet email, vous recevrez un lien de reinitialisation.");
+        setSuccess(true);
       } catch (err) {
         setError(err.message);
-        console.log(err);
       } finally {
         setLoading(false);
       }
@@ -77,13 +72,12 @@ function ForgotPass() {
   return (
     <main className="flex flex-col items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500 text-white">
       <div className="bg-white text-gray-900 shadow-lg mt-28 mb-60 rounded-2xl p-10 max-w-lg w-full">
-        <h1 className="text-2xl font-semibold text-center mb-4">Mot de passe oublié</h1>
+        <h1 className="text-2xl font-semibold text-center mb-4">Mot de passe oublie</h1>
 
-        {/* Show form only if success is false */}
         {!success ? (
           <>
             <p className="text-center text-gray-600 mb-4">
-              Entrez votre email pour recevoir un lien de réinitialisation.
+              Entrez votre email pour recevoir un lien de reinitialisation.
             </p>
             <form onSubmit={handleSubmit} className="flex flex-col">
               <input
@@ -108,7 +102,6 @@ function ForgotPass() {
             </form>
           </>
         ) : (
-          // Show success message when form is hidden
           <p className="mt-4 text-center text-blue-500">{message}</p>
         )}
 

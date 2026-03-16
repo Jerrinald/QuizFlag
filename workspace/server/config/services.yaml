@@ -14,8 +14,6 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        bind:
-            string $sendinblueApiKey: '%env(SENDINBLUE_API_KEY)%'
 
     'App\ContextBuilder\UserContextBuilder':
         decorates: 'api_platform.serializer_context_builder'
@@ -35,6 +33,10 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\Service\EmailService:
+        arguments:
+            $sendinblueApiKey: '%env(SENDINBLUE_API_KEY)%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

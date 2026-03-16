@@ -4,7 +4,7 @@ function Ranking() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const token = localStorage.getItem("jwtToken"); // ✅ Ensure token is retrieved
+  const token = localStorage.getItem("jwtToken");
 
   useEffect(() => {
     fetchData();
@@ -12,8 +12,7 @@ function Ranking() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL
-}/api/usersRank`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/usersRank`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -21,7 +20,7 @@ function Ranking() {
       });
 
       if (!response.ok) {
-        throw new Error("Erreur lors de la récupération des utilisateurs");
+        throw new Error("Erreur lors de la recuperation des utilisateurs");
       }
 
       const data = await response.json();

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import EditProfileModal from "./EditProfileModal";
+import EditProfileModal from "../components/EditProfileModal";
 
 function Profile() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(""); // To store API errors
+    const [errorMessage, setErrorMessage] = useState("");
 
     const userId = localStorage.getItem("id");
     const token = localStorage.getItem("jwtToken");
@@ -35,11 +35,8 @@ function Profile() {
                 return;
             }
 
-            console.log(formEdit);
-            
-
-            setUsername(formEdit.username); // Extract username from formEdit object
-            localStorage.setItem("username", formEdit.username); // Store only the string
+            setUsername(formEdit.username);
+            localStorage.setItem("username", formEdit.username);
             setIsModalOpen(false);
         } catch (error) {
             setErrorMessage("Une erreur est survenue.");
@@ -56,7 +53,7 @@ function Profile() {
                 {errorMessage && <p className="text-red-500 text-sm mb-2">{errorMessage}</p>}
                 <p><strong>Nom d'utilisateur:</strong> {username}</p>
                 <p><strong>Email:</strong> {email}</p>
-                <button 
+                <button
                     onClick={() => setIsModalOpen(true)}
                     className="mt-4 bg-gray-900 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105"
                 >
@@ -65,9 +62,9 @@ function Profile() {
             </div>
 
             {isModalOpen && (
-                <EditProfileModal 
-                    currentUsername={username} 
-                    onSave={handleSaveUsername} 
+                <EditProfileModal
+                    currentUsername={username}
+                    onSave={handleSaveUsername}
                     onClose={() => setIsModalOpen(false)}
                 />
             )}

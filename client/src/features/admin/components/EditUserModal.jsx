@@ -30,7 +30,7 @@ function EditUserModal({ user, onClose, onSave }) {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <form className="bg-white p-6 rounded-lg shadow-lg w-2/5" onSubmit={handleSubmit}>
         <h2 className="text-xl font-bold mb-4">
-          {isNew ? "Créer un utilisateur" : "Modifier l'utilisateur"}
+          {isNew ? "Creer un utilisateur" : "Modifier l'utilisateur"}
         </h2>
 
         <input

@@ -11,16 +11,16 @@ function EditProfileModal({ currentUsername, onSave, onClose }) {
         const { name, value } = e.target;
         setFormValues({
             ...formValues,
-            [name]: value, // Update the correct field dynamically
+            [name]: value,
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (formValues.username.trim()) {
-            onSave(formValues); // Pass only username to the onSave function
+            onSave(formValues);
         } else {
-            setErrorMessage("Le nom d'utilisateur ne peut pas être vide.");
+            setErrorMessage("Le nom d'utilisateur ne peut pas etre vide.");
         }
     };
 
@@ -35,21 +35,21 @@ function EditProfileModal({ currentUsername, onSave, onClose }) {
                     </label>
                     <input
                         id="username"
-                        name="username" // Make sure the name attribute is set
+                        name="username"
                         type="text"
                         value={formValues.username}
                         onChange={handleInputChange}
                         className="w-full p-2 border border-gray-300 rounded-md mb-4"
                     />
                     <div className="flex justify-end gap-2">
-                        <button 
+                        <button
                             type="button"
                             onClick={onClose}
                             className="px-4 py-2 bg-gray-300 rounded-md"
                         >
                             Annuler
                         </button>
-                        <button 
+                        <button
                             type="submit"
                             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
                         >

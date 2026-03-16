@@ -1,4 +1,3 @@
-import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
@@ -7,17 +6,17 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import QuizzContainer from "./components/QuizzContainer.jsx";
+import QuizzContainer from "./features/flag/pages/QuizzContainer.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
-import Profile from "./components/Profile.jsx";
-import AdminUser from "./components/AdminUsers.jsx";
-import Ranking from "./components/Ranking.jsx";
-import ForgotPass from "./components/ForgotPass.jsx";
-import NewPassword from "./components/NewPassword.jsx";
+import Login from "./features/auth/pages/Login.jsx";
+import Register from "./features/auth/pages/Register.jsx";
+import { AuthProvider } from "./features/auth/contexts/AuthContext.jsx";
+import Profile from "./features/profile/pages/Profile.jsx";
+import AdminUser from "./features/admin/pages/AdminUsers.jsx";
+import Ranking from "./features/flag/pages/Ranking.jsx";
+import ForgotPass from "./features/auth/pages/ForgotPass.jsx";
+import NewPassword from "./features/auth/pages/NewPassword.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 
@@ -78,7 +77,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthProvider> {/* Wrap everything with AuthProvider */}
+  <AuthProvider>
     <RouterProvider router={router} />
   </AuthProvider>
 );

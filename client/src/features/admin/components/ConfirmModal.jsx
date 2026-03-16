@@ -7,8 +7,8 @@ function ConfirmModal({ user, onCancel, onConfirm }) {
         <h2 className="text-xl font-bold mb-4 text-center text-red-600">
           Supprimer l'utilisateur ?
         </h2>
-        <p className="text-center mb-4">Êtes-vous sûr de vouloir supprimer <strong>{user.username}</strong> ?</p>
-        
+        <p className="text-center mb-4">Etes-vous sur de vouloir supprimer <strong>{user.username}</strong> ?</p>
+
         <div className="flex justify-center gap-3">
           <button className="bg-gray-400 px-3 py-1 rounded" onClick={onCancel}>
             Annuler

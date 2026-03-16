@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import '../assets/css/register.css';
+import '../../../assets/css/register.css';
 
 function Register() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-
-  // State variables for form values and errors
   const [formValues, setFormValues] = useState({
     username: '',
     email: '',
@@ -29,8 +27,6 @@ function Register() {
   const BackHome = () => {
     navigate("/");
   };
-
-
 
   const validateForm = () => {
     let isValid = true;
@@ -59,12 +55,10 @@ function Register() {
     e.preventDefault();
 
     if (validateForm()) {
-      setLoading(true); // Afficher le loader
-      console.log(formValues);
-      
+      setLoading(true);
+
       try {
-        const response = fetch(`${import.meta.env.VITE_API_BASE_URL
-}/api/users`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/ld+json',
@@ -73,22 +67,23 @@ function Register() {
         });
 
         if (response.ok) {
-          navigate("/");
+          const data = await response.json();
+          navigate("/login");
         } else {
-          const errorBody = await response.json(); // Parse l'erreur retournée par l'API
-          console.log(formValues);
-          setErrorMessage('Une erreur est survenue ', errorBody.message);
-          // Handle errors (e.g., display error message)
+          const errorBody = await response.json();
+          setErrorMessage(
+            errorBody?.hydra.description || "Une erreur est survenue lors de l'inscription"
+          );
         }
       } catch (error) {
-        setErrorMessage('Erreur lors de la création', error);
+        console.error("Erreur:", error);
+        setErrorMessage("Erreur reseau lors de la creation", error);
       } finally {
-        setLoading(false); // Masquer le loader
+        setLoading(false);
       }
     }
   };
 
-  // Function to handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValues({
@@ -101,9 +96,9 @@ function Register() {
     <div className="flex-center flex-column bg-gradient-to-r from-blue-400 to-purple-500">
       <div className="mt-20 mb-60 pt-5 pb-3 form-zone">
 
-        <h1 className="title"> Créer un compte </h1>
-        
-        <form  className='flex items-center justify-center flex-col' onSubmit={handleSubmit}>
+        <h1 className="title"> Creer un compte </h1>
+
+        <form className='flex items-center justify-center flex-col' onSubmit={handleSubmit}>
           <input
             className="field"
             type="text"
@@ -116,7 +111,6 @@ function Register() {
           {formErrors.username && (
             <span className="error">{formErrors.username}</span>
           )}
-
 
           <input
             className="field"
@@ -154,23 +148,23 @@ function Register() {
               className="flex-center cursor-pointer hover:text-gray-300"
               onClick={redirectRegister}
             >
-            Se connecter</li>
+              Se connecter</li>
             <li onClick={BackHome} className='flex flex-row cursor-pointer hover:text-gray-300'>
-            <svg
+              <svg
                 className="w-5 h-5 rtl:rotate-180"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-            >
+              >
                 <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
                 />
-            </svg>
-            <span>Accueil</span>
+              </svg>
+              <span>Accueil</span>
             </li>
           </ul>
         </form>

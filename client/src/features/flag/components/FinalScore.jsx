@@ -1,6 +1,4 @@
 import React from 'react';
-import medecinImage from "../assets/medecin.png";
-import { useNavigate } from "react-router-dom";
 
 function FinalScore() {
 

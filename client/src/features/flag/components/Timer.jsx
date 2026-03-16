@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function Timer({ initialTime, onTimeUp }) {
     const [timeLeft, setTimeLeft] = useState(initialTime);
@@ -13,10 +13,9 @@ function Timer({ initialTime, onTimeUp }) {
             setTimeLeft((prevTime) => prevTime - 1);
         }, 1000);
 
-        return () => clearInterval(timerId); // Cleanup on unmount
+        return () => clearInterval(timerId);
     }, [timeLeft, onTimeUp]);
 
-    // Convert seconds to minutes and seconds
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
 

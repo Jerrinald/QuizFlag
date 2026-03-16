@@ -8,20 +8,16 @@ function NewPassword() {
     const [loading, setLoading] = useState(false);
 
     const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);  
+    const queryParams = new URLSearchParams(location.search);
 
     const token = queryParams.get("token");
     const email = queryParams.get("email");
-
-    console.log(email);
-    
 
     const [formValues, setFormValues] = useState({
         token : token,
         email : email,
         plainPassword: '',
     });
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -51,7 +47,7 @@ function NewPassword() {
       if (!response.ok) {
         throw new Error(data.error || "Une erreur s'est produite.");
       } else {
-        setMessage("Votre mot de passe a été mis à jour avec succès !");
+        setMessage("Votre mot de passe a ete mis a jour avec succes !");
       }
     } catch (err) {
       setError(err.message);
@@ -64,7 +60,7 @@ function NewPassword() {
     <main className="flex flex-col items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500 text-white">
       <div className="bg-white text-gray-900 shadow-lg mt-28 mb-60 rounded-2xl p-10 max-w-lg w-full">
         <h1 className="text-2xl font-semibold text-center mb-4">
-          Réinitialisation du mot de passe
+          Reinitialisation du mot de passe
         </h1>
         {!message && (
         <>
@@ -87,7 +83,7 @@ function NewPassword() {
               type="submit"
               disabled={loading}
             >
-              {loading ? "Mise à jour..." : "Mettre à jour"}
+              {loading ? "Mise a jour..." : "Mettre a jour"}
             </button>
           </form>
         </>

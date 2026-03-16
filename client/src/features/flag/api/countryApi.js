@@ -7,7 +7,6 @@ export const fetchCountries = async () => {
       throw new Error(`Error: Received status code ${response.status}`);
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching countries", error);
