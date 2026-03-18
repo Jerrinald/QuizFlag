@@ -1,14 +1,15 @@
 
+import { playSound } from '@/utils/sounds';
 import { FaCheck, FaForward } from 'react-icons/fa';
 import { checkCountry } from '../utils/countryCheck';
-import { playSound } from '../../../utils/sounds';
 
 export default function QuizzForm({ iso, onAnswerCheck, disabled }) {
 
     const handleSubmit = (event, isSkipped) => {
         event.preventDefault();
         if (disabled) return;
-        playSound('submit');
+
+        if (isSkipped) playSound('submit');
 
         let name = "";
         if (isSkipped === false) {
@@ -22,17 +23,17 @@ export default function QuizzForm({ iso, onAnswerCheck, disabled }) {
 
     return (
         <div className="flex flex-col items-center w-2/3">
-            <form onSubmit={(event) => handleSubmit(event, false)} className="flex flex-col sm:flex-row gap-4 items-center w-5/6">
+            <form onSubmit={(event) => handleSubmit(event, false)} className="flex flex-col lg:flex-row gap-4 items-center w-5/6">
                 <input
                     type="text"
                     name='name'
-                    className='border-2 border-gray-400 rounded-lg py-2 px-4 text-center text-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all'
+                    className='w-full sm:w-3/4 lg:w-auto border-2 border-gray-400 rounded-lg py-2 px-4 text-center text-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all'
                     placeholder="Entrez le nom d'un pays"
                 />
                 <button
                     type="submit"
                     disabled={disabled}
-                    className={`font-bold py-2 px-4 rounded-lg text-white cursor-pointer transition-all duration-300 ${
+                    className={`w-5/6 sm:w-3/4 lg:w-auto lg-font-bold py-2 px-4 rounded-lg text-white cursor-pointer transition-all duration-300 lg:flex-1 ${
                         disabled
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-blue-500 hover:bg-blue-700"

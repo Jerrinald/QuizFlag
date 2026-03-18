@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className='h-20 w-full bg-slate-500 flex justify-between items-center px-6'>
       <div className="flex items-center justify-center gap-3">
-        <h1 className='text-white text-2xl font-bold cursor-pointer hover:text-gray-100' onClick={() => navigate('/')}>FlagQuiz</h1>
+        <img src="/logos/geotempo.png" alt="GeoTempo" className='h-32 cursor-pointer' onClick={() => navigate('/')} />
 
       </div>
 

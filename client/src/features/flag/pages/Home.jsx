@@ -1,18 +1,19 @@
+import { Dialog, DialogPanel, DialogTitle, Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition, TransitionChild } from '@headlessui/react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import useQuizStore from '../../../store/quizStore';
+
+const durations = [
+  { value: 60, label: '1 min' },
+  { value: 90, label: '1 min 30' },
+  { value: 120, label: '2 min' },
+];
 
 function Home() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem('jwtToken');
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  const { duration, setDuration } = useQuizStore();
 
   const closeModalAndStart = () => {
     setShowModal(false);
@@ -20,42 +21,92 @@ function Home() {
   };
 
   return (
-    <main className='flex flex-col items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500 text-white p-5 sm:p-0'>
+    <main className='flex flex-col items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500 text-white p-5 lg:p-0'>
       <div className="bg-white text-gray-900 shadow-lg mt-32 mb-60 rounded-2xl p-10 max-w-lg w-full text-center m-3">
         <h1 className='text-4xl font-extrabold mb-4'>Quiz sur les drapeaux</h1>
         <h2 className='text-lg font-medium mb-6'>Trouvez le maximum de pays associes aux drapeaux</h2>
 
         <button
           className='text-xl bg-green-500 rounded-lg py-4 px-8 hover:bg-green-600 transition-transform transform hover:scale-105 font-semibold shadow-md'
-          onClick={openModal}>
+          onClick={() => setShowModal(true)}>
           Commencer le Quizz
         </button>
       </div>
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="relative bg-white text-gray-900 rounded-2xl p-8 max-w-md w-full text-center">
-            <button
-              className="absolute -top-1 right-2 text-gray-600 hover:text-gray-900 text-3xl font-bold"
-              onClick={closeModal}>
-              &times;
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Informations sur le Quiz</h2>
-            <p className="text-gray-700 mb-3">
-              Ce quiz contient des drapeaux de differents pays.
-              Vous devez deviner le maximum de pays possibles en un temps imparti.
-            </p>
-            <p className="text-gray-700 font-bold mb-3">
-              Il n'est pas necessaire de mettre des accents (e, e, e, ') et des espaces.
-            </p>
-            <button
-              className='text-xl bg-green-500 rounded-lg py-4 px-8 hover:bg-green-600 transition-transform transform hover:scale-105 font-semibold shadow-md'
-              onClick={closeModalAndStart}>
-              Commencer
-            </button>
+      <Transition show={showModal}>
+        <Dialog onClose={() => setShowModal(false)} className="relative z-50">
+          {/* Backdrop */}
+          <TransitionChild
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
+          </TransitionChild>
+
+          {/* Modal */}
+          <div className="fixed inset-0 flex items-center justify-center p-4">
+            <TransitionChild
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <DialogPanel className="relative bg-white text-gray-900 rounded-2xl p-8 max-w-md text-center">
+                <button
+                  className="absolute -top-1 right-2 text-gray-600 hover:text-gray-900 text-3xl font-bold"
+                  onClick={() => setShowModal(false)}>
+                  &times;
+                </button>
+                <DialogTitle className="text-2xl font-bold mb-4">Informations sur le Quiz</DialogTitle>
+                <p className="text-gray-700 mb-3">
+                  Ce quiz contient des drapeaux de differents pays.
+                  Vous devez deviner le maximum de pays possibles en un temps imparti.
+                </p>
+                <p className="text-gray-700 font-bold mb-3">
+                  Il n'est pas necessaire de mettre des accents (e, e, e, ') et des espaces.
+                </p>
+
+                <div className="relative mb-6 mt-5">
+                  <label className="block text-sm font-bold text-gray-700 mb-1 text-left">Durée du quiz</label>
+                  <Listbox value={durations.find(d => d.value === duration)} onChange={(opt) => setDuration(opt.value)}>
+                    <ListboxButton className="w-full flex items-center justify-between rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-400">
+                      {durations.find(d => d.value === duration)?.label}
+                      <span className="ml-2 text-gray-400">▼</span>
+                    </ListboxButton>
+                    <ListboxOptions className="absolute z-10 mt-1 w-full rounded-lg border border-gray-200 bg-white shadow-lg focus:outline-none">
+                      {durations.map((opt) => (
+                        <ListboxOption
+                          key={opt.value}
+                          value={opt}
+                          className={({ focus, selected }) =>
+                            `cursor-pointer px-4 py-2 text-sm font-semibold transition-colors ${
+                              selected ? 'bg-green-500 text-white' : focus ? 'bg-gray-100 text-gray-700' : 'text-gray-700'
+                            }`
+                          }
+                        >
+                          {opt.label}
+                        </ListboxOption>
+                      ))}
+                    </ListboxOptions>
+                  </Listbox>
+                </div>
+
+                <button
+                  className='text-xl bg-green-500 rounded-lg py-4 px-8 hover:bg-green-600 transition-transform transform hover:scale-105 font-semibold shadow-md'
+                  onClick={closeModalAndStart}>
+                  Commencer
+                </button>
+              </DialogPanel>
+            </TransitionChild>
           </div>
-        </div>
-      )}
+        </Dialog>
+      </Transition>
     </main>
   );
 }

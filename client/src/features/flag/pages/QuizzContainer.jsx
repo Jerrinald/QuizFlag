@@ -1,15 +1,16 @@
 import arrayShuffle from 'array-shuffle';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import useQuizStore from '../../../store/quizStore';
+import { playSound } from '../../../utils/sounds';
 import { fetchCountries } from '../api/countryApi';
 import CardQuizz from '../components/CardQuizz';
-import { playSound } from '../../../utils/sounds';
 import CounterStart from '../components/CounterStart';
 import Timer from '../components/Timer';
 
 function QuizzContainer() {
     const navigate = useNavigate();
-    const [timer, setTimer] = useState(120);
+    const duration = useQuizStore((state) => state.duration);
     const [countries, setCountries] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [quizOver, setQuizOver] = useState(false);
@@ -33,7 +34,7 @@ function QuizzContainer() {
     };
 
     const handleNext = () => {
-        if (timer > 0) {
+        if (!quizOver) {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % countries.length);
         }
     };
@@ -69,13 +70,13 @@ function QuizzContainer() {
     const currentCountry = countries[currentIndex] || null;
 
     return (
-        <main ref={sectionRef} className="p-5 sm:p-0 flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 text-white">
+        <main ref={sectionRef} className="p-5 lg:p-0 flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 text-white">
             {quizStart ? (
-                <section className="mb-40 p-8 text-center w-full max-w-2xl">
+                <section className="mb-40 p-5 lg:p-8 text-center w-full max-w-2xl">
                     <CounterStart onFinish={() => setQuizStart(false)} />
                 </section>
             ) : (
-                <section className="mt-8 mb-40 p-8 bg-white shadow-lg rounded-2xl text-gray-900 text-center w-full max-w-4xl">
+                <section className="mt-5 lg:mt-8 mb-40 p-5 lg:p-8 bg-white shadow-lg rounded-2xl text-gray-900 text-center w-full max-w-4xl">
                     {quizOver ? (
                         <>
                             {newBestScore ? (
@@ -94,7 +95,7 @@ function QuizzContainer() {
                         <>
                             <h1 className="text-2xl font-bold mb-4">Trouvez le plus de pays possible</h1>
                             <div className='flex flex-col sm:flex-row items-center justify-center sm:gap-4'>
-                                <Timer initialTime={90} onTimeUp={handleTimeUp} />
+                                <Timer initialTime={duration} onTimeUp={handleTimeUp} />
                                 <span className='text-xl'>Score : {score}</span>
                             </div>
 

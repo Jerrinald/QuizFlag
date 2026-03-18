@@ -1,6 +1,6 @@
+import { playSound } from '@/utils/sounds';
 import { useState } from 'react';
 import QuizzForm from './QuizzForm';
-import { playSound } from '../../../utils/sounds';
 
 function CardQuizz({ svgCountry, iso, onCorrectAnswer, onIncrementScore }) {
     const [isCorrect, setIsCorrect] = useState(null);
@@ -39,7 +39,7 @@ function CardQuizz({ svgCountry, iso, onCorrectAnswer, onIncrementScore }) {
 
     return (
         <div className="mt-2 w-full flex flex-col items-center">
-            <div className="flex items-center justify-center flex-col mb-6 gap-1 sm:w-3/4">
+            <div className="flex items-center justify-center flex-col mb-6 gap-1 w-5/6 sm:w-2/4 lg:w-3/4">
                 <span className={`${isSkippedFlag ? 'text-black' : isCorrect ? 'text-green-600' : 'text-red-600'} text-xl font-semibold transition-opacity duration-300 ${showCorrectMessage ? 'visible' : 'invisible'}`}>
                     {isSkippedFlag
                         ? `La reponse est : ${showCorrectName}`
@@ -49,7 +49,7 @@ function CardQuizz({ svgCountry, iso, onCorrectAnswer, onIncrementScore }) {
                 </span>
 
                 <img
-                    className="sm:w-3/4 aspect-[4/3] object-contain border-4 border-gray-300 rounded-lg shadow-lg p-4 bg-gray-100"
+                    className="lg:w-3/4 aspect-[4/3] object-contain border-4 border-gray-300 rounded-lg shadow-lg p-4 bg-gray-100"
                     src={svgCountry}
                     alt="Country flag"
                 />
