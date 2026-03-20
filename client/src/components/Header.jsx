@@ -7,9 +7,9 @@ function Header() {
 
 
   return (
-    <header className='h-20 w-full bg-slate-500 flex justify-between items-center px-6'>
+    <header className='h-20 w-full bg-slate-500 flex justify-between items-center px-4'>
       <div className="flex items-center justify-center gap-3">
-        <img src="/logos/geotempo.png" alt="GeoTempo" className='h-32 cursor-pointer' onClick={() => navigate('/')} />
+        <img src="/logos/geocountry.png" alt="GeoCountry" className='h-36 cursor-pointer' onClick={() => navigate('/')} />
 
       </div>
 

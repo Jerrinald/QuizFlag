@@ -1,10 +1,10 @@
 import './index.css'
-import Home from './features/flag/pages/Home'
+import QuizHome from './features/quiz/pages/QuizHome'
 
 function App() {
   return (
     <>
-      <Home />
+      <QuizHome />
     </>
   )
 }

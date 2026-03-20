@@ -6,7 +6,6 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import QuizzContainer from "./features/flag/pages/QuizzContainer.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Login from "./features/auth/pages/Login.jsx";
@@ -15,6 +14,8 @@ import { AuthProvider } from "./features/auth/contexts/AuthContext.jsx";
 import Profile from "./features/profile/pages/Profile.jsx";
 import AdminUser from "./features/admin/pages/AdminUsers.jsx";
 import Ranking from "./features/flag/pages/Ranking.jsx";
+import QuizEngine from "./features/quiz/pages/QuizEngine.jsx";
+import { flagQuiz, capitalQuiz } from "./features/quiz/strategies/index.js";
 import ForgotPass from "./features/auth/pages/ForgotPass.jsx";
 import NewPassword from "./features/auth/pages/NewPassword.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -34,8 +35,12 @@ const router = createBrowserRouter([
         element: <App />,
       },
       {
-        path: "/quiz",
-        element: <QuizzContainer />,
+        path: "/quiz/flag",
+        element: <QuizEngine strategy={flagQuiz} />,
+      },
+      {
+        path: "/quiz/capital",
+        element: <QuizEngine strategy={capitalQuiz} />,
       },
       {
         path: "/login",
