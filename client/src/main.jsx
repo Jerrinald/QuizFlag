@@ -6,19 +6,18 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import Login from "./features/auth/pages/Login.jsx";
-import Register from "./features/auth/pages/Register.jsx";
-import { AuthProvider } from "./features/auth/contexts/AuthContext.jsx";
-import Profile from "./features/profile/pages/Profile.jsx";
-import AdminUser from "./features/admin/pages/AdminUsers.jsx";
-import Ranking from "./features/flag/pages/Ranking.jsx";
-import QuizEngine from "./features/quiz/pages/QuizEngine.jsx";
-import { flagQuiz, capitalQuiz } from "./features/quiz/strategies/index.js";
-import ForgotPass from "./features/auth/pages/ForgotPass.jsx";
-import NewPassword from "./features/auth/pages/NewPassword.jsx";
+import Header from "./components/Header.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import AdminUser from "./features/admin/pages/AdminUsers.jsx";
+import { AuthProvider } from "./features/auth/contexts/AuthContext.jsx";
+import ForgotPass from "./features/auth/pages/ForgotPass.jsx";
+import Login from "./features/auth/pages/Login.jsx";
+import NewPassword from "./features/auth/pages/NewPassword.jsx";
+import Register from "./features/auth/pages/Register.jsx";
+import Profile from "./features/profile/pages/Profile.jsx";
+import QuizEngine from "./features/quiz/pages/QuizEngine.jsx";
+import { capitalQuiz, flagQuiz } from "./features/quiz/strategies/index.js";
 
 
 const router = createBrowserRouter([
@@ -63,10 +62,6 @@ const router = createBrowserRouter([
             </>
           </ProtectedRoute>
         ),
-      },
-      {
-        path: "/ranking",
-        element: <Ranking />,
       },
       {
         path: "/forgot-pass",
