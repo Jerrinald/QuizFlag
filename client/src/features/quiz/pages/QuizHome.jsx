@@ -105,7 +105,7 @@ function QuizHome() {
                   Vous devez deviner le maximum de pays possibles en un temps imparti.
                 </p>
                 <p className="text-gray-700 font-bold mb-3">
-                  Il n'est pas necessaire de mettre des accents (é, è, ê, ') et des espaces.
+                  Il n'est pas nécessaire de mettre des accents (é, è, ê, ') et des espaces.
                 </p>
 
                 <div className="relative mb-6 mt-5">

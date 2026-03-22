@@ -13,7 +13,7 @@ export const flagQuiz = {
     <img
       className="lg:w-3/4 aspect-[4/3] object-contain border-4 border-gray-300 rounded-lg shadow-lg p-4 bg-gray-100"
       src={country.flags?.svg}
-      alt="Country flag"
+      alt="Drapeau du pays à deviner"
     />
   ),
 };
