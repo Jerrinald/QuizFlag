@@ -15,9 +15,18 @@
     <meta name="twitter:image" content="/logos/geocountry.png" />
     <title>GeoCountry - Quiz Drapeaux et Capitales du Monde</title>
 
-    <!-- Google Analytics — chargé uniquement si consentement donné -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DNVF6R9YF2"></script>
     <script>
-      window.GA_ID = 'G-XXXXXXXXXX';
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DNVF6R9YF2');
+    </script>
+
+    <!-- Version avec consentement RGPD (bannière cookie) — à réactiver si nécessaire
+    <script>
+      window.GA_ID = 'G-DNVF6R9YF2';
       window.loadGA = function() {
         if (document.querySelector('script[src*="googletagmanager"]')) return;
         var s = document.createElement('script');
@@ -33,6 +42,7 @@
         window.loadGA();
       }
     </script>
+    -->
   </head>
   <body>
     <div id="root"></div>
