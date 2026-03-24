@@ -14,6 +14,25 @@
     <meta name="twitter:description" content="Quiz interactif sur les drapeaux et capitales du monde." />
     <meta name="twitter:image" content="/logos/geocountry.png" />
     <title>GeoCountry - Quiz Drapeaux et Capitales du Monde</title>
+
+    <!-- Google Analytics — chargé uniquement si consentement donné -->
+    <script>
+      window.GA_ID = 'G-XXXXXXXXXX';
+      window.loadGA = function() {
+        if (document.querySelector('script[src*="googletagmanager"]')) return;
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_ID;
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ window.dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', window.GA_ID);
+      };
+      if (localStorage.getItem('cookie-consent') === 'accepted') {
+        window.loadGA();
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -22,7 +22,9 @@ export default function QuizForm({ iso, skipLabel, onAnswerCheck, disabled }) {
   return (
     <div className="flex flex-col items-center w-2/3">
       <form onSubmit={(event) => handleSubmit(event, false)} className="flex flex-col lg:flex-row gap-4 items-center w-5/6">
+        <label htmlFor="quiz-answer" className="sr-only">Nom du pays</label>
         <input
+          id="quiz-answer"
           type="text"
           name="name"
           className="w-full sm:w-3/4 lg:w-auto border-2 border-gray-400 rounded-lg py-2 px-4 text-center text-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"

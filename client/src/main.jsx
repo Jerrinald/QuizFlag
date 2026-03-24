@@ -6,6 +6,7 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
+import CookieBanner from "./components/CookieBanner.jsx";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Header /> <Outlet /> <Footer />
+        <Header /> <Outlet /> <Footer /> <CookieBanner />
       </>
     ),
     children: [

@@ -20,7 +20,7 @@ function Ranking() {
       });
 
       if (!response.ok) {
-        throw new Error("Erreur lors de la recuperation des utilisateurs");
+        throw new Error("Erreur lors de la récupération des utilisateurs");
       }
 
       const data = await response.json();

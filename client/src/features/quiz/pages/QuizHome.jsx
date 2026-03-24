@@ -94,6 +94,7 @@ function QuizHome() {
                 <button
                   className="absolute -top-1 right-2 text-gray-600 hover:text-gray-900 text-3xl font-bold"
                   onClick={closeModal}
+                  aria-label="Fermer"
                 >
                   &times;
                 </button>

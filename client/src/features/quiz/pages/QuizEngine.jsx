@@ -77,15 +77,15 @@ function QuizEngine({ strategy }) {
           {quizOver ? (
             <>
               {newBestScore ? (
-                <h1 className="text-3xl font-bold mb-4">Nouveau meilleur score : {score}</h1>
+                <h2 className="text-3xl font-bold mb-4">Nouveau meilleur score : {score}</h2>
               ) : (
-                <h1 className="text-3xl font-bold mb-4">Score final: {score}</h1>
+                <h2 className="text-3xl font-bold mb-4">Score final : {score}</h2>
               )}
               <button
                 className="text-2xl bg-green-500 rounded-lg py-4 px-8 hover:bg-green-600 transition-transform transform hover:scale-105 font-semibold shadow-md mt-4"
                 onClick={redirectHome}
               >
-                Retour a l'accueil
+                Retour à l'accueil
               </button>
             </>
           ) : (
