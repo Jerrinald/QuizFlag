@@ -23,6 +23,7 @@ function QuizEngine({ strategy }) {
   useEffect(() => {
     if (quizStart && sectionRef.current) {
       sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      playSound('start');
     }
   }, [quizStart]);
 

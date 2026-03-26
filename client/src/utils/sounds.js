@@ -3,7 +3,9 @@ const SOUNDS = {
   incorrect: '/sounds/incorrect.mp3',
   submit: '/sounds/submit.mp3',
   skip: '/sounds/submit.mp3',
+  start: '/sounds/start.mp3',
   finish: '/sounds/finish.mp3',
+  timeTicking: '/sounds/time_ticking.mp3',
 };
 
 const audioCache = {};
