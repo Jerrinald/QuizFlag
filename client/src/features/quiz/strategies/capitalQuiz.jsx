@@ -8,6 +8,7 @@ export const capitalQuiz = {
   title: 'Trouvez le pays correspondant à la capitale',
   loadingLabel: 'Chargement des capitales...',
   path: '/quiz/capital',
+  questionClassName: 'w-5/6 sm:w-2/4 lg:w-3/4',
 
   filterCountry: (country) => country.capital?.length > 0,
 

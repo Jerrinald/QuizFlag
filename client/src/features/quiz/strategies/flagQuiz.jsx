@@ -8,6 +8,7 @@ export const flagQuiz = {
   title: 'Trouvez le plus de pays possible',
   loadingLabel: 'Chargement des drapeaux...',
   path: '/quiz/flag',
+  questionClassName: 'w-5/6 sm:w-2/4 lg:w-3/4',
 
   filterCountry: () => true,
 

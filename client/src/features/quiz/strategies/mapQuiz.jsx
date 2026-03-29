@@ -9,6 +9,7 @@ export const mapQuiz = {
   title: 'Quel est ce pays ?',
   loadingLabel: 'Chargement de la carte...',
   path: '/quiz/map',
+  questionClassName: 'w-5/6 lg:w-5/6',
 
   loadData: async () => {
     const data = await fetchCountries();

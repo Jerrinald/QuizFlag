@@ -5,7 +5,7 @@ function Timer({ initialTime, onTimeUp }) {
     const [timeLeft, setTimeLeft] = useState(initialTime);
     const [finalTime, setFinalTime] = useState(false);
 
-    const FINAL_TIME = 8;
+    const FINAL_TIME = 7;
 
     useEffect(() => {
         if (timeLeft <= 0) {
