@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useQuizStore from '../../../store/quizStore';
 import { playSound } from '../../../utils/sounds';
-import { fetchCountries } from '../api/countryApi';
+
 import CounterStart from '../components/CounterStart';
 import QuizCard from '../components/QuizCard';
 import Timer from '../components/Timer';
@@ -51,15 +51,14 @@ function QuizEngine({ strategy }) {
   useEffect(() => {
     const getCountries = async () => {
       try {
-        const data = await fetchCountries();
-        const filtered = data.filter(strategy.filterCountry);
-        if (filtered.length > 0) {
-          setCountries(arrayShuffle(filtered));
+        const data = await strategy.loadData();
+        if (data.length > 0) {
+          setCountries(arrayShuffle(data));
         } else {
-          console.error('No countries received from API');
+          console.error('No countries received');
         }
       } catch (error) {
-        console.error('Error fetching countries:', error);
+        console.error('Error loading quiz data:', error);
       }
     };
     getCountries();

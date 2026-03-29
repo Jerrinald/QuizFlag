@@ -1,3 +1,5 @@
+import { fetchCountries } from '../api/countryApi';
+
 export const flagQuiz = {
   id: 'flag',
   name: 'Quiz Drapeaux',
@@ -8,6 +10,11 @@ export const flagQuiz = {
   path: '/quiz/flag',
 
   filterCountry: () => true,
+
+  loadData: async () => {
+    const data = await fetchCountries();
+    return data;
+  },
 
   renderQuestion: (country) => (
     <img

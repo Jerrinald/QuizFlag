@@ -1,4 +1,4 @@
-const API_URL = 'https://restcountries.com/v3.1/all?fields=name,flags,capital,cca2,cca3';
+const API_URL = 'https://restcountries.com/v3.1/all?fields=name,flags,capital,cca2,cca3,ccn3';
 
 export const fetchCountries = async () => {
   try {
