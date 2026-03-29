@@ -1,6 +1,6 @@
 FROM node:alpine AS builder
 WORKDIR /srv/app
-COPY package*.json ./
+COPY package*.json .npmrc ./
 RUN npm ci
 COPY . .
 RUN npm run build
